@@ -67,93 +67,59 @@ Before writing code, Claude classifies the request into one of four domains and 
 
 ### Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed (or Claude Desktop with Cowork)
+- [Claude Code](https://claude.ai/code) installed
 - `ANTHROPIC_API_KEY` exported, or Claude Code will prompt on first run
 
-### Method 1: Direct download (quickest)
+### Via GitHub (recommended)
+
+**Global installation** (available across all projects):
 
 ```bash
-# Via npx (ModelScope)
-npx skills add https://github.com/MingfengHong/css-research-skills
-
-# Via ModelScope SDK
-pip install --upgrade modelscope
-modelscope skills add MingfengHong/css-research-skills
-
-# Via bash
-curl -fsSL https://modelscope.cn/skills/install.sh | bash -s -- MingfengHong/css-research-skills
+mkdir -p ~/.claude/skills
+git clone https://github.com/MingfengHong/css-research-skills.git ~/.claude/skills/css-research-skills
+cp -r ~/.claude/skills/css-research-skills/css-research-assistant ~/.claude/skills/css-research-assistant
 ```
 
-### Method 2: As project skills (recommended for per-project use)
-
-Clone this repo into your project's `.claude/skills/` directory:
+**Project installation** (recommended for per-project use):
 
 ```bash
 cd /path/to/your/project
 mkdir -p .claude/skills
 git clone https://github.com/MingfengHong/css-research-skills.git .claude/skills/css-research-skills
-```
-
-Then copy the `css-research-assistant/` folder to `.claude/skills/`:
-
-```bash
 cp -r .claude/skills/css-research-skills/css-research-assistant .claude/skills/css-research-assistant
 ```
 
-> **Global installation:** To make skills available across all your projects, install to `~/.claude/skills/` instead:
->
-> ```bash
-> mkdir -p ~/.claude/skills
-> git clone https://github.com/MingfengHong/css-research-skills.git ~/.claude/skills/css-research-skills
-> cp -r ~/.claude/skills/css-research-skills/css-research-assistant ~/.claude/skills/css-research-assistant
-> ```
+> **No Git?** Go to <https://github.com/MingfengHong/css-research-skills>, click **Code** → **Download ZIP**, extract it, then copy the `css-research-assistant/` folder to the target location above.
 
-### Method 3: As a standalone project
+### Via ModelScope
+
+Alternatively, install via ModelScope:
+
+**Global installation:**
 
 ```bash
-git clone https://github.com/MingfengHong/css-research-skills.git
-cd css-research-skills
-claude
+npx skills add https://github.com/MingfengHong/css-research-skills
 ```
 
-<details>
-<summary><strong>No Git?</strong> Download as ZIP instead</summary>
+Or via the ModelScope SDK:
 
-1. Go to <https://github.com/MingfengHong/css-research-skills>
-2. Click the green **Code** button → **Download ZIP**
-3. Extract the ZIP to your desired location
-4. For Method 2: move the `css-research-assistant/` folder to `.claude/skills/css-research-assistant` inside your project
-5. For standalone use: open a terminal in the extracted folder and run `claude`
+```bash
+pip install --upgrade modelscope
+modelscope skills add MingfengHong/css-research-skills
+```
 
-</details>
+Or via bash:
 
-### Method 4: Claude Cowork (desktop)
+```bash
+curl -fsSL https://modelscope.cn/skills/install.sh | bash -s -- MingfengHong/css-research-skills
+```
 
-Use this skill in [Claude Cowork](https://claude.com/product/cowork) — Claude Desktop's agentic workspace.
-
-**Option A: folder access (quickest)**
-
-1. Clone this repo locally:
-   ```bash
-   git clone https://github.com/MingfengHong/css-research-skills.git ~/css-research-skills
-   ```
-2. Open Claude Desktop → click **Cowork** tab (top bar)
-3. Select the cloned `css-research-skills` folder as the working directory
-4. Claude will auto-detect the skill from `SKILL.md` files and load them as needed
-
-**Option B: as project skills**
-
-If you already have a project folder in Cowork:
+**Project installation:**
 
 ```bash
 cd /path/to/your/project
-mkdir -p .claude/skills
-git clone https://github.com/MingfengHong/css-research-skills.git .claude/skills/css-research-skills
+npx skills add https://github.com/MingfengHong/css-research-skills
 ```
-
-Skills auto-load when relevant — e.g., saying "run a DiD regression" triggers `causal_inference.md`.
-
-**Requirements:** Claude Desktop (latest version) with Cowork enabled; paid plan (Pro, Max, Team, or Enterprise).
 
 ### Post-installation
 

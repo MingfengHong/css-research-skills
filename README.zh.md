@@ -67,92 +67,59 @@ css-research-skills/
 
 ### 前置要求
 
-- 已安装 [Claude Code](https://claude.ai/code)（或支持 Cowork 的 Claude Desktop）
+- 已安装 [Claude Code](https://claude.ai/code)
 - 已导出 `ANTHROPIC_API_KEY`，或首次运行 Claude Code 时按提示输入
 
-### 方法 1：直接安装（最快）
+### 通过 GitHub（推荐）
+
+**全局安装**（在所有项目中可用）：
 
 ```bash
-# 通过 npx（ModelScope）
-npx skills add https://github.com/MingfengHong/css-research-skills
-
-# 通过 ModelScope SDK
-pip install --upgrade modelscope
-modelscope skills add MingfengHong/css-research-skills
-
-# 通过 bash
-curl -fsSL https://modelscope.cn/skills/install.sh | bash -s -- MingfengHong/css-research-skills
+mkdir -p ~/.claude/skills
+git clone https://github.com/MingfengHong/css-research-skills.git ~/.claude/skills/css-research-skills
+cp -r ~/.claude/skills/css-research-skills/css-research-assistant ~/.claude/skills/css-research-assistant
 ```
 
-### 方法 2：作为项目技能（推荐用于特定项目）
-
-将本仓库克隆到项目目录的 `.claude/skills/` 下：
+**项目安装**（推荐用于特定项目）：
 
 ```bash
 cd /path/to/your/project
 mkdir -p .claude/skills
 git clone https://github.com/MingfengHong/css-research-skills.git .claude/skills/css-research-skills
-```
-
-然后将 `css-research-assistant/` 文件夹复制到 `.claude/skills/`：
-
-```bash
 cp -r .claude/skills/css-research-skills/css-research-assistant .claude/skills/css-research-assistant
 ```
 
-> **全局安装：** 如果你想在所有项目中使用该技能，安装到 `~/.claude/skills/`：
-> ```bash
-> mkdir -p ~/.claude/skills
-> git clone https://github.com/MingfengHong/css-research-skills.git ~/.claude/skills/css-research-skills
-> cp -r ~/.claude/skills/css-research-skills/css-research-assistant ~/.claude/skills/css-research-assistant
-> ```
+> **没有 Git？** 访问 <https://github.com/MingfengHong/css-research-skills>，点击 **Code** → **Download ZIP**，解压后将 `css-research-assistant/` 文件夹复制到上述目标位置即可。
 
-### 方法 3：作为独立项目使用
+### 通过魔搭（ModelScope）
+
+也可以通过魔搭安装：
+
+**全局安装：**
 
 ```bash
-git clone https://github.com/MingfengHong/css-research-skills.git
-cd css-research-skills
-claude
+npx skills add https://github.com/MingfengHong/css-research-skills
 ```
 
-<details>
-<summary><strong>没有 Git？</strong> 直接下载 ZIP</summary>
+或通过 ModelScope SDK：
 
-1. 访问 <https://github.com/MingfengHong/css-research-skills>
-2. 点击绿色 **Code** 按钮 → **Download ZIP**
-3. 解压 ZIP 到目标位置
-4. 方法 2：将解压后的 `css-research-assistant/` 文件夹移动到项目内的 `.claude/skills/css-research-assistant`
-5. 独立使用：在解压后的文件夹中打开终端，运行 `claude`
+```bash
+pip install --upgrade modelscope
+modelscope skills add MingfengHong/css-research-skills
+```
 
-</details>
+或通过 bash：
 
-### 方法 4：Claude Cowork（桌面端）
+```bash
+curl -fsSL https://modelscope.cn/skills/install.sh | bash -s -- MingfengHong/css-research-skills
+```
 
-在 [Claude Cowork](https://claude.com/product/cowork) 中使用此技能。
-
-**选项 A：文件夹访问（最快）**
-
-1. 本地克隆本仓库：
-   ```bash
-   git clone https://github.com/MingfengHong/css-research-skills.git ~/css-research-skills
-   ```
-2. 打开 Claude Desktop → 点击顶部 **Cowork** 标签
-3. 选择克隆的 `css-research-skills` 文件夹作为工作目录
-4. Claude 将自动检测 `SKILL.md` 文件并按需加载技能
-
-**选项 B：作为项目技能**
-
-如果你已在 Cowork 中有项目文件夹：
+**项目安装：**
 
 ```bash
 cd /path/to/your/project
-mkdir -p .claude/skills
-git clone https://github.com/MingfengHong/css-research-skills.git .claude/skills/css-research-skills
+npx skills add https://github.com/MingfengHong/css-research-skills
 ```
-
-技能会在相关场景自动触发——例如说"运行双重差分回归"时会加载 `causal_inference.md`。
-
-**要求：** Claude Desktop（最新版）并启用 Cowork；付费计划（Pro、Max、Team 或 Enterprise）。
 
 ### 安装后
 
