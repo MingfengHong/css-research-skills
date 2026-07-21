@@ -1,0 +1,125 @@
+{
+  "benchmark_id": "comprehensive-pilot-2026-07-21",
+  "dimensions": [
+    {"id": "research_framing", "label": "Research framing"},
+    {"id": "method_fit", "label": "Method fit"},
+    {"id": "implementation", "label": "Implementation"},
+    {"id": "diagnostics", "label": "Diagnostics"},
+    {"id": "reproducibility", "label": "Reproducibility"},
+    {"id": "responsible_claims", "label": "Responsible claims"}
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "name": "staggered-adoption-did",
+      "domain": "Causal inference",
+      "prompt": "我有 2012—2024 年城市年度数据，各城市在不同年份开始执行一项就业补贴，部分城市始终未执行。字段包括 city_id、year、policy_start、employment、population 和 region。请给出可实施的 R 分析方案和代码骨架，估计政策实施前后的动态效应并生成论文图表。团队目前考虑直接估计城市和年份固定效应模型，请判断是否合适，并说明从数据检查到结果解释的完整流程。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Defines the analysis population, treatment timing, dynamic or cohort-time target effects, and eligible comparison groups before estimation."},
+        {"dimension": "method_fit", "text": "Chooses an estimator whose target remains interpretable under staggered adoption and heterogeneous effects; any vanilla TWFE result is explicitly limited to a diagnostic comparison."},
+        {"dimension": "implementation", "text": "Provides a current, implementable R skeleton that constructs treatment timing, checks support, estimates effects, aggregates them transparently, and produces a dynamic-effect figure."},
+        {"dimension": "diagnostics", "text": "Treats pre-treatment coefficients as limited evidence and adds design-based checks, sensitivity or placebo analyses, and inference aligned with the policy assignment level."},
+        {"dimension": "reproducibility", "text": "Records sample construction, exclusions, package or environment versions, an execution entry point, and persistent model and figure artifacts."},
+        {"dimension": "responsible_claims", "text": "Limits interpretation to supported cohorts, event times, comparison groups, and identifying assumptions rather than presenting one aggregate coefficient as universally causal."}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "cross-language-iv-audit",
+      "domain": "Causal inference",
+      "prompt": "一篇教育研究用“距历史大学的距离”作为是否接受新课程的工具变量，主要结果分别用 Python 和 R 实现，但两边的系数和标准误差不一致。数据包含学生、学校、地区、课程参与、考试成绩、工具变量和控制变量。请设计一套排查与复核流程，并给出两种实现的代码结构。最终需要形成一张可用于论文的主结果表，但现在不要假定任何一边是正确答案。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Defines the target effect and explains relevance, independence, exclusion, and monotonicity when applicable in terms of the proposed distance instrument."},
+        {"dimension": "method_fit", "text": "Specifies the first and second stages, fixed effects or controls, assignment-aligned inference, and appropriate weak-instrument evidence without relying on one mechanical threshold."},
+        {"dimension": "implementation", "text": "Aligns Python and R analysis samples, missing-data rules, formulas, coding, weights, fixed effects, instrument definitions, clustering, and degrees-of-freedom defaults before comparing outputs."},
+        {"dimension": "diagnostics", "text": "Uses staged tests to locate coefficient versus standard-error differences and does not assume either software implementation is correct merely because it runs."},
+        {"dimension": "reproducibility", "text": "Creates a minimal shared fixture or canonical extract, records both environments, defines an execution order, and produces one traceable publication table with effect scale, uncertainty, and N."},
+        {"dimension": "responsible_claims", "text": "States that numerical software agreement does not validate the instrument and limits interpretation to the population and effect identified by the design."}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "multilingual-text-causal-measurement",
+      "domain": "Text analysis",
+      "prompt": "团队计划用 2008—2025 年中英文政府讲话测量“危机框架”，然后研究某项政策实施后这种表达是否变化。现有方案是统一删除停用词和标点，用全部文本选择主题模型，再人工检查 100 篇文章。请设计从语料建立、人工标注、模型选择到后续统计分析的完整方案，并指出哪些步骤最可能制造看似显著但不可信的结果。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Separates corpus representation, exploratory discovery, construct measurement, prediction evaluation, and downstream causal analysis instead of treating a discovered topic as the construct."},
+        {"dimension": "method_fit", "text": "Chooses annotation, multilingual equivalence, model evaluation, and data separation or cross-fitting rules that prevent construct discovery and effect estimation from reusing the same evidence."},
+        {"dimension": "implementation", "text": "Makes Chinese and English tokenization, translation or multilingual modeling, stopwords, punctuation, and other preprocessing explicit sensitivity choices rather than one universal cleaning recipe."},
+        {"dimension": "diagnostics", "text": "Collects application-relevant validity evidence and systematic close-reading or error analysis across languages, periods, and important subgroups."},
+        {"dimension": "reproducibility", "text": "Documents corpus boundaries, units, sources, dates, exclusions, duplicates, label provenance, drift, model versions, untouched evaluation data, and persistent artifacts."},
+        {"dimension": "responsible_claims", "text": "Addresses access or ethical constraints and explains how measurement error, policy-induced observability changes, and causal assumptions limit the final claim."}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "imbalanced-text-classification-audit",
+      "domain": "Text analysis",
+      "prompt": "一个项目用 3 万篇跨媒体、跨年份的新闻文章训练 BERT，判断文章是否采用“责任归因框架”。随机划分后准确率为 0.91，但语料中有转载、同一记者的连续报道，而且正类只占 12%。请审查该结果是否足以写入论文，并给出从数据切分、基线模型、评估到误差分析的改进方案和代码组织建议。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Defines the framing construct, document and label unit, annotation rule, intended population, and what a model prediction can and cannot represent theoretically."},
+        {"dimension": "method_fit", "text": "Uses a split strategy matched to the generalization claim and compares the complex model with a meaningful simpler baseline rather than relying on random-split BERT accuracy."},
+        {"dimension": "implementation", "text": "Removes exact and near duplicates before splitting and keeps learned preprocessing, feature selection, tuning, and model choice inside the training and validation workflow."},
+        {"dimension": "diagnostics", "text": "Reports per-class precision, recall and F1, macro metrics, imbalance-appropriate curves or summaries, calibration or threshold behavior, subgroup results, and systematic false-positive and false-negative analysis."},
+        {"dimension": "reproducibility", "text": "Records data and annotation versions, split identifiers, model and tokenizer versions, stochastic settings, environment, run entry point, predictions, metrics, and paper-ready artifacts."},
+        {"dimension": "responsible_claims", "text": "Does not equate 0.91 accuracy with construct validity or deployment readiness and limits conclusions to evaluated media, periods, journalists or events."}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "large-spatial-abm",
+      "domain": "Agent-based modeling",
+      "prompt": "我们有一个城市居住选择模型：5 万个家庭根据附近住房价格和邻居特征决定是否搬迁。当前脚本每一步遍历所有家庭寻找邻居，直接调用全局随机数，只跑一条轨迹，最后仅保存一张截图；换一台电脑后结果和运行时间差异很大。请提出最小但足以用于论文的重构和实验方案，既要改善运行，也要说明如何判断模型实现和结论是否可信。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Defines household state, local interaction, spatial structure, schedule, micro-to-macro mechanism, outcome patterns, and the claim the simulation is intended to support."},
+        {"dimension": "method_fit", "text": "Separates verification, calibration, independent validation, Monte Carlo uncertainty, parameter sensitivity, and sensitivity to at least one consequential mechanism or schedule choice."},
+        {"dimension": "implementation", "text": "Replaces all-household neighbor searches with a structure appropriate to the spatial model, manages randomness through the model or explicit RNGs, and uses centralized data collection."},
+        {"dimension": "diagnostics", "text": "Profiles before and after optimization and includes toy cases, rule tests, empty-neighborhood or boundary cases, invariants, schedule checks, and a small smoke run."},
+        {"dimension": "reproducibility", "text": "Provides a version-aware run entry point and long-form outputs containing scenario, parameter, replicate, seed, time, metric, environment, and links from outputs to figures."},
+        {"dimension": "responsible_claims", "text": "Does not treat one fixed-seed trajectory, faster runtime, or calibration fit as validation and states the empirical and structural scope of the conclusions."}
+      ]
+    },
+    {
+      "id": 6,
+      "name": "large-bipartite-network",
+      "domain": "Network analysis",
+      "prompt": "数据记录 15 万名研究者参加 2 万场项目或会议的情况。团队已经把它投影成研究者—研究者网络，想找“最重要的合作中介”，比较学科社群并画一张论文网络图。网络不连通，少数大型会议包含上千人。请设计分析流程，说明哪些结论可以从投影网络得到，哪些需要回到原始二模网络验证。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Defines researcher and event nodes, participation edges, time window, duplicates, boundary, weight meaning, and the mechanism meant by collaboration brokerage."},
+        {"dimension": "method_fit", "text": "Preserves the bipartite representation, explains clique inflation from large events, chooses defensible projection weights or bipartite alternatives, and tests projection or boundary sensitivity."},
+        {"dimension": "implementation", "text": "Uses sparse or scalable graph operations and justified exact or approximate centrality and community methods without constructing an unnecessary dense matrix."},
+        {"dimension": "diagnostics", "text": "Reports isolates and components, labels any GCC-restricted population, checks weight semantics, community resolution or stability, and approximation or sampling error."},
+        {"dimension": "reproducibility", "text": "Saves graph-construction provenance, node metrics, community assignments, configuration and version information, and a reproducible visualization with persistent outputs."},
+        {"dimension": "responsible_claims", "text": "Avoids a full-network hairball and limits 'importance' or disciplinary-group claims in light of projection artifacts, missing participation, boundary choices, and the selected centrality mechanism."}
+      ]
+    },
+    {
+      "id": 7,
+      "name": "valued-ergm-with-missing-dyads",
+      "domain": "Network analysis",
+      "prompt": "一项学校研究记录学生之间一学期内主动发送学习消息的次数，网络有方向且权重为计数；由于服务器故障，大约 12% 的潜在关系没有被观测到。研究者想用性别同质性、年级和共同伙伴解释关系形成。请提出模型、诊断和解释方案，并说明如何处理未观测关系以及怎样判断模型是否支持论文中的机制主张。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Defines the directed count response, network boundary, exposure window, weight meaning, missing-dyad mechanism, and substantive homophily and closure claims."},
+        {"dimension": "method_fit", "text": "Uses a model that supports valued networks with a justified reference distribution and theory-derived activity, homophily, and dependence terms; any binary analysis is only a stated sensitivity check."},
+        {"dimension": "implementation", "text": "Routes to a current capable ERGM implementation, represents unobserved dyads as missing rather than zero, and makes constraints and staged model construction explicit."},
+        {"dimension": "diagnostics", "text": "Checks estimation information, convergence or degeneracy, and simulation-based GOF on degree or strength, shared partners, mixing, and weight features not merely copied from fitted terms."},
+        {"dimension": "reproducibility", "text": "Records model formulas, versions, reference distribution, constraints, control settings, seeds or chains, missing-data sensitivity, saved fits, diagnostics, and output-to-claim mapping."},
+        {"dimension": "responsible_claims", "text": "Interprets coefficients conditionally in the full dependent-network model, treats missingness assumptions as consequential, and avoids converting association into a causal mechanism claim."}
+      ]
+    },
+    {
+      "id": 8,
+      "name": "restricted-data-replication-package",
+      "domain": "Research engineering",
+      "prompt": "一个计算社会科学项目准备投稿。项目把授权获取的行政记录与公开社交媒体帖子关联起来；原始数据不能公开。当前仓库由三个 notebook 和两个脚本组成，包含本机路径，需要手动按顺序运行，论文有 4 张图和 3 张表，但没有说明各产物由哪个程序生成。请给出一套尽量不重写分析方法的发布与复现整改方案。",
+      "expectations": [
+        {"dimension": "research_framing", "text": "Inventories the seven claimed paper artifacts and the data, transformations, programs, populations, units, and access conditions needed to reproduce each one."},
+        {"dimension": "method_fit", "text": "Separates raw, derived and analysis layers with stable identifiers, metadata, variable and missing-code definitions, exclusion records, and transformation provenance while preserving the existing analysis method."},
+        {"dimension": "implementation", "text": "Removes machine-specific paths, adds a master entry point or exact execution order, captures the environment, and maps every program's inputs and outputs without an unnecessary project rewrite."},
+        {"dimension": "diagnostics", "text": "Adds row-count, uniqueness, join-cardinality, type, range and output-schema checks at critical interfaces and verifies a small end-to-end run in a clean environment."},
+        {"dimension": "reproducibility", "text": "Provides a truthful data-availability statement, public/restricted artifact manifest, dependency and runtime information, README execution instructions, and a program-to-figure/table map."},
+        {"dimension": "responsible_claims", "text": "Assesses authorization, re-identification, reasonable expectations, platform terms, group harm and secondary-use risk, and supplies a safe schema or synthetic fixture when real data cannot be shared."}
+      ]
+    }
+  ]
+}

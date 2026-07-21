@@ -1,0 +1,40 @@
+# Agent-local state and benchmark workspaces
+.agents/
+.codex/
+css-research-skills-workspace/
+benchmarks/targeted-regression-results.json
+tmp/
+
+# Generated release artifacts
+dist/
+
+# Python caches and test artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Local environments and secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*~

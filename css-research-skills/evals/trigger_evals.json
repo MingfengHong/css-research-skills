@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I have county-year data where Medicaid expansions start in different years. Build a defensible event-study workflow and explain which ATT the figure estimates.",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我审查论文里的 RDD：running variable 是考试分数，60 分录取，作者用了四阶全局多项式，也没有检查 cutoff 附近操纵。",
+    "should_trigger": true
+  },
+  {
+    "query": "We coded 20,000 parliamentary speeches for populist rhetoric with an LLM. I need a construct-validity audit, a better annotation design, and reproducible error analysis.",
+    "should_trigger": true
+  },
+  {
+    "query": "这个中文微博 BERTopic 项目对停用词和 min_df 很敏感，请设计预处理敏感性分析并说明怎样结合人工阅读验证主题。",
+    "should_trigger": true
+  },
+  {
+    "query": "Upgrade our Schelling segregation model to the Mesa version installed in this repo, document it with ODD, and design multi-seed sensitivity experiments.",
+    "should_trigger": true
+  },
+  {
+    "query": "I am modeling innovation diffusion among firms where agents learn from network neighbors. Help connect the micro rules to macro adoption curves and distinguish calibration from validation.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fit an ERGM to a directed advice network with missing dyads and weighted tie counts; I need a term rationale, constraints, MCMC diagnostics, and simulation GOF.",
+    "should_trigger": true
+  },
+  {
+    "query": "我们的合作网络用 Louvain 得到 18 个社区，但有几个社区内部不连通。请改用 Leiden 并做 resolution 和随机种子稳定性分析。",
+    "should_trigger": true
+  },
+  {
+    "query": "Design a target-trial emulation for statin initiation using longitudinal EHR data with treatment-confounder feedback and censoring.",
+    "should_trigger": true
+  },
+  {
+    "query": "Prepare the data/code architecture and README requirements for an economics replication package with restricted administrative data and 500 simulation runs.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a React page called Social Network where users can follow friends, upload avatars, and send direct messages.",
+    "should_trigger": false
+  },
+  {
+    "query": "Our Neo4j production cluster has high write latency. Diagnose indexes, query plans, memory, and replication settings.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a short science-fiction story about a society governed by an all-knowing algorithm.",
+    "should_trigger": false
+  },
+  {
+    "query": "Give me ten upbeat Instagram captions and a posting calendar for our university sociology department.",
+    "should_trigger": false
+  },
+  {
+    "query": "Use linear regression to predict apartment prices from square footage and number of bedrooms for this real-estate demo app.",
+    "should_trigger": false
+  },
+  {
+    "query": "My Windows laptop says unidentified network and cannot reach the Wi-Fi gateway. Walk me through adapter and DNS troubleshooting.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create an ABM campaign plan for account-based marketing: target enterprise buyers, coordinate sales outreach, and score accounts.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this paragraph so the causal transitions sound clearer; keep the meaning and citations unchanged.",
+    "should_trigger": false
+  },
+  {
+    "query": "Fine-tune a transformer for autocomplete in our code editor and optimize inference latency; there is no research or social-science analysis.",
+    "should_trigger": false
+  },
+  {
+    "query": "Make this quarterly revenue chart publication-ready at 300 dpi and use our corporate brand colors.",
+    "should_trigger": false
+  }
+]
