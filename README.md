@@ -1,177 +1,97 @@
-# Computational Social Science Skill for Claude
+<div align="center">
 
-A Claude skill for rigorous, reproducible, publication-grade research software engineering in Computational Social Science (CSS). Covers causal inference, natural language processing, agent-based modeling, and social network analysis.
+# CSS Research Skills
 
----
+**Research-design-first guidance for computational social science agents**
 
-## What This Skill Does
+Turn a social-science question into an inspectable analysis across causal inference, text as data, agent-based modelling, and network science—without treating runnable code as sufficient evidence.
 
-This skill turns Claude into a Research Software Engineer that understands both social theory and code. It does not just write Python scripts — it enforces research-grade standards: fixed random seeds, structured logging, defensive assertions, algorithmic complexity annotations, and academic visualization conventions.
+[![Version](https://img.shields.io/badge/version-2.0.0-7A8B64)](css-research-skills/SKILL.md)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-C6D0B4)](https://agentskills.io/)
+[![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-7A8B64)](LICENSE)
 
-Before writing any code, the skill routes the user's request to the correct analytical domain and loads domain-specific constraints, toolchains, and validation protocols.
+[简体中文](README.zh.md) · [Quick start](#quick-start) · [Benchmark](#benchmark)
 
-## Repository Structure
+</div>
 
-```
-css-research-skills/
-│
-├── README.md
-├── LICENSE
-│
-└── css-research-assistant/
-    ├── SKILL.md
-    └── references/
-        ├── packages.md
-        ├── causal_inference.md
-        ├── nlp_text_analysis.md
-        ├── abm_simulation.md
-        └── network_analysis.md
-```
+## Why this Skill?
 
-**Note:** Per the [official Claude skill guidelines](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md), the skill folder itself (`css-research-assistant/`) must not contain a `README.md`. The human-facing documentation lives at the repository root.
+General-purpose coding agents can produce plausible analyses while silently changing the estimand, skipping construct validation, using an obsolete package API, or calling a pipeline “reproducible” because it has a fixed seed. `css-research-skills` adds the research contract and validity checks needed between a question and a claim.
 
-## How It Works
+It helps an agent:
 
-### Progressive Disclosure
+- distinguish description, prediction, measurement, causal identification, and simulation explanation;
+- route mixed projects to every relevant domain instead of forcing one method label;
+- connect code, diagnostics, robustness checks, provenance, ethics, and final claims;
+- load detailed guidance only when the task needs it.
 
-The skill uses a three-level loading system to avoid context overload:
+The Skill supports researcher judgment; it does not replace subject-matter expertise, ethics review, or identification arguments.
 
-1. **SKILL.md** (~160 lines) — Always loaded. Contains the domain router, universal coding standards, and the Definition of Done checklist.
-2. **Domain references** (~140–165 lines each) — Loaded on demand when the router identifies the user's analytical domain.
-3. **Package reference** (~90 lines) — Loaded when a specific package is central to the task.
+## Quick start
 
-### Domain Router
-
-Before writing code, Claude classifies the request into one of four domains and loads the corresponding reference:
-
-| Domain | Trigger | Reference |
-|---|---|---|
-| **Causal Inference** | Regression, DiD, RDD, IV, fixed effects, matching | `references/causal_inference.md` |
-| **Text Analysis / NLP** | Topic modeling, sentiment, embeddings, parsing, classification | `references/nlp_text_analysis.md` |
-| **ABM / Simulation** | Agent-based models, Mesa, diffusion, opinion dynamics | `references/abm_simulation.md` |
-| **Network Analysis** | Graphs, centrality, community detection, ERGMs | `references/network_analysis.md` |
-
-### Universal Standards (All Domains)
-
-- **Theory First**: State the identification strategy or theoretical mechanism before coding.
-- **Reproducibility**: Fix all random seeds (`seed=42`) and log them.
-- **Defensive Coding**: Assert domain constraints (e.g., `assert 0 <= p <= 1.0`).
-- **Complexity Awareness**: Annotate Big-O for loop-heavy operations; warn if O(N^2) or worse.
-- **Pipeline Integrity**: Centralize paths in a `PATHS` dict; verify downstream compatibility.
-- **Output Persistence**: Every table, plot, and report is saved to `output/`, not just printed.
-- **Publication-Grade Visuals**: Nature/Science style — no chart junk, Okabe-Ito or Viridis colors, `dpi=300`.
-- **Error Handling**: No bare `except:`; use `raise ... from e` to preserve chains.
-- **No Emojis / No Filler**: Structured logs only (`[INFO] YYYY-MM-DD HH:MM:SS - message`).
-
-## Installation
-
-### Prerequisites
-
-- [Claude Code](https://claude.ai/code) installed
-- `ANTHROPIC_API_KEY` exported, or Claude Code will prompt on first run
-
-### Via GitHub (recommended)
-
-**Global installation** (available across all projects):
+Clone the repository, then copy the inner directory—the one containing `SKILL.md`—to the skill directory used by your agent:
 
 ```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/MingfengHong/css-research-skills.git ~/.claude/skills/css-research-skills
-cp -r ~/.claude/skills/css-research-skills/css-research-assistant ~/.claude/skills/css-research-assistant
+git clone https://github.com/MingfengHong/css-research-skills.git
+cp -R css-research-skills/css-research-skills ~/.claude/skills/css-research-skills
 ```
 
-**Project installation** (recommended for per-project use):
+Other Agent Skills-compatible tools can use the same inner directory; only the installation location changes.
 
-```bash
-cd /path/to/your/project
-mkdir -p .claude/skills
-git clone https://github.com/MingfengHong/css-research-skills.git .claude/skills/css-research-skills
-cp -r .claude/skills/css-research-skills/css-research-assistant .claude/skills/css-research-assistant
+Then try a real research task:
+
+```text
+Audit my staggered-adoption DiD design. Define the estimand, flag invalid
+comparisons, propose diagnostics, and give an implementation plan in R.
 ```
 
-> **No Git?** Go to <https://github.com/MingfengHong/css-research-skills>, click **Code** → **Download ZIP**, extract it, then copy the `css-research-assistant/` folder to the target location above.
-
-### Via ModelScope
-
-Alternatively, install via ModelScope:
-
-**Global installation:**
-
-```bash
-npx skills add https://github.com/MingfengHong/css-research-skills
+```text
+Design a multilingual text-measurement pipeline for a causal study. Include
+annotation, validity evidence, preprocessing sensitivity, and sample splitting.
 ```
 
-Or via the ModelScope SDK:
-
-```bash
-pip install --upgrade modelscope
-modelscope skills add MingfengHong/css-research-skills
+```text
+Review this Mesa model and network-analysis pipeline for API compatibility,
+ODD documentation, simulation validation, community robustness, and provenance.
 ```
 
-Or via bash:
+## What it covers
 
-```bash
-curl -fsSL https://modelscope.cn/skills/install.sh | bash -s -- MingfengHong/css-research-skills
-```
+| Area | Guidance included |
+|---|---|
+| Causal inference | Target trials, DAGs, experiments, regression adjustment, panel designs, modern DiD/event studies, RDD, IV, matching/weighting, longitudinal analyses |
+| Text as data / NLP | Corpus design, representation, discovery, construct measurement, annotation, classification, embeddings, LLM coding, text in causal workflows |
+| Agent-based modelling | ODD 2020, Mesa version gates, conceptual models, calibration, validation, invariants, sensitivity and Monte Carlo uncertainty |
+| Network analysis | Network construction, centrality, communities, bipartite and temporal networks, null models, power laws, ERGM/TERGM |
+| Reproducible research | Provenance, raw/derived/analysis data separation, environment capture, executable workflows, restricted data, responsible computing |
 
-**Project installation:**
+## What changed in 2.0.0
 
-```bash
-cd /path/to/your/project
-npx skills add https://github.com/MingfengHong/css-research-skills
-```
+- Replaced rigid defaults with design-dependent decisions and explicit validity gates.
+- Added modern staggered-adoption DiD, text-measurement validity and sample splitting, ODD 2020, Mesa version gates, Leiden stability, valid power-law assessment, and ERGM 4 guidance.
+- Expanded reproducibility from “seed + output folder” to provenance, metadata, environment capture, master execution, output mapping, and restricted-data instructions.
+- Added stakeholder, privacy, foreseeable-harm, dual-use, and mitigation checks.
 
-### Post-installation
+## Benchmark
 
-Restart Claude Code. The skill will auto-trigger when you mention topics related to social networks, regression, text modeling, agent simulation, or causal inference.
+The expanded benchmark covers eight tasks: staggered DiD, cross-language IV, multilingual text measurement, imbalanced text classification, spatial ABM, bipartite networks, valued ERGM, and a restricted-data replication package. Every response is assessed on six dimensions: research framing, method fit, implementation, diagnostics, reproducibility, and responsible claims.
 
-## Usage Example
+![Comprehensive benchmark comparing No Skill, Skill 1.0.0, and Skill 2.0.0](assets/benchmark-comparison.png)
 
-**User**: "I want to run a difference-in-differences regression on this panel dataset with clustered standard errors."
+| Condition | Checks passed | Pass rate | Difference from No Skill |
+|---|---:|---:|---:|
+| No Skill | 28/48 | 58.3% | — |
+| Skill 1.0.0 | 31/48 | 64.6% | +6.3 pp |
+| Skill 2.0.0 | 42/48 | 87.5% | +29.2 pp |
 
-**Claude (with skill)**:
-1. Routes to **Causal Inference** domain.
-2. Reads `references/causal_inference.md`.
-3. Asks: "What is your treatment variable, outcome variable, entity identifier, and time variable?"
-4. Writes `did_analysis.py` with:
-   - Identification strategy stated in comments
-   - `linearmodels.PanelOLS` with `cov_type='clustered'`
-   - Event-study plot for parallel-trend validation
-   - Multi-model Markdown table saved to `output/regression_table.md`
-   - Completion checklist printed at the end
+The broader matrix includes areas emphasized by 1.0.0. Skill 2.0.0 leads overall, while 1.0.0 scores higher on the imbalanced text-classification task (5/6 versus 4/6).
 
-## Domain-Specific Highlights
+See the [complete task and dimension results](benchmarks/README.md).
 
-### Causal Inference
-- **Toolchain lock**: `statsmodels` / `linearmodels` (Python); `fixest` (R for high-dim FE).
-- **Standard errors**: Robust/Clustered/HAC mandatory; spherical SEs forbidden.
-- **The Cunningham Verification**: Cross-language coefficient check (Python vs R) for benchmark models.
+## Acknowledgements
 
-### NLP / Text Analysis
-- **Preprocessing split**: Classical NLP (stopwords, lemmatization) for LDA; minimal cleaning for Transformers.
-- **Baseline requirement**: TF-IDF + LinearSVC before BERT.
-- **Construct validity**: Explicit operationalization of latent constructs (polarization, framing, etc.).
-
-### ABM / Simulation
-- **OOP strictness**: Mandatory `mesa.Model` / `mesa.Agent` inheritance.
-- **Randomness lock**: Use Mesa's `self.random`, never Python `random`.
-- **Performance**: Spatial lookup via Mesa native methods; O(N^2) neighbor loops forbidden.
-
-### Network Analysis
-- **Complexity gates**: Betweenness centrality O(N^3) warning for N > 10,000.
-- **Bipartite defense**: Weighted projection + information-loss warning.
-- **Language lock**: ERGMs switch to R (`statnet` / `ergm`) with MCMC degeneracy checks.
-
-## Development
-
-This skill was built following the Anthropic [Skill Creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) workflow:
-1. Draft skill from domain expertise and academic best practices.
-2. Run parallel evals (with-skill vs without-skill) on realistic CSS tasks.
-3. Grade outputs with programmatic assertions (reproducibility, paths, visualization quality).
-4. Iterate based on quantitative benchmarks and qualitative code review.
+The community-oriented presentation is inspired by [nuwa-skill](https://github.com/alchaincyf/nuwa-skill) and [academic-research-skills](https://github.com/Imbad0202/academic-research-skills).
 
 ## License
 
-This work is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
-
-You are free to share and adapt this material for **non-commercial** purposes, provided you give appropriate credit. See `LICENSE` for the full legal text.
+[CC BY-NC 4.0](LICENSE). You may share and adapt the work with attribution for non-commercial use.

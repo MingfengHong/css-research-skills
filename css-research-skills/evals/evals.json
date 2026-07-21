@@ -1,0 +1,47 @@
+{
+  "skill_name": "css-research-skills",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我有一个 2012-2024 年的城市-年份面板，政策在不同城市于不同年份启动，变量是 city_id、year、policy_start、employment、population 和 region。请给出可直接落地的 R 分析方案与代码骨架，估计动态政策效应并画事件研究图。我原本打算直接跑城市和年份双向固定效应，再看处理前系数是否不显著。",
+      "expected_output": "A modern staggered-adoption DiD plan and R skeleton that defines the estimand and comparison group, uses a heterogeneity-robust estimator, treats pre-trend tests cautiously, and specifies diagnostics, inference, aggregation, and reproducibility artifacts.",
+      "files": [],
+      "expectations": [
+        "The response identifies staggered treatment timing and does not present vanilla TWFE leads/lags as the preferred causal estimator under heterogeneous effects.",
+        "The response defines group-time or cohort/event-time effects, the control group (never-treated or not-yet-treated), and aggregation weights before reporting an overall effect.",
+        "The response recommends a method such as Callaway-Sant'Anna or Sun-Abraham and uses syntax consistent with a current documented R implementation.",
+        "The response states that non-significant pre-treatment coefficients do not prove parallel trends and adds design-based or sensitivity evidence.",
+        "The response aligns clustering/inference with treatment assignment and discusses simultaneous uncertainty or few-cluster issues when relevant.",
+        "The response reports sample construction, treatment timing support, exclusions, environment/version information, and an output-to-claim plan."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我们想用 2008-2025 年中英文政府讲话测量“危机框架”，再把模型分数作为政策出台后的结果变量做因果分析。团队建议先删停用词、统一词形、用全样本挑 BERTopic 主题，再人工看 100 篇确认。请设计一套从语料构建、标注、模型到因果估计的工作流，并指出最容易造成虚假结论的环节。",
+      "expected_output": "A construct-validity-first multilingual text workflow that treats preprocessing as a sensitivity choice, separates discovery from measurement, designs annotation/evaluation by precision and subgroups, and uses sample splitting or cross-fitting before causal estimation.",
+      "files": [],
+      "expectations": [
+        "The response distinguishes corpus representation, discovery, measurement, prediction, and causal inference instead of treating topics as a validated construct.",
+        "The response documents multilingual corpus boundaries, units, selection/exclusion rules, temporal drift, provenance, and ethical/access constraints.",
+        "The response rejects unconditional stopword and lemmatization rules and proposes preprocessing sensitivity checks appropriate to Chinese and English.",
+        "The response defines substantive, structural, external or generalization validity evidence and includes close reading plus systematic error analysis.",
+        "The response does not mandate an arbitrary annotation sample size; it justifies labeling and subgroup coverage and preserves an untouched evaluation set.",
+        "The response separates representation/model discovery from causal effect estimation with sample splitting or cross-fitting and identifies the role of text in the causal design."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "请帮我升级一个旧的 Mesa 社会扩散模型：它还在用 RandomActivation 和手工 unique_id。模型在加权社交网络上传播创新，我还想比较社区内外扩散，并检验这个网络是不是 scale-free。先给迁移与实验设计，不要假设我的 Mesa 版本，也不要只给一段能运行的代码。",
+      "expected_output": "A version-gated, multi-domain ABM/network plan using current Mesa AgentSet patterns when appropriate, ODD and scientific verification, replicated sensitivity experiments, Leiden-based community robustness, and statistically defensible power-law testing.",
+      "files": [],
+      "expectations": [
+        "The response routes the task to both ABM and network analysis and checks the installed Mesa version before choosing migration syntax.",
+        "For Mesa 3+ the response uses super().__init__(seed=seed), automatic unique IDs, and AgentSet activation such as shuffle_do rather than deprecated mesa.time schedulers.",
+        "The response includes an ODD-aligned mechanism description, schedule rationale, verification tests, calibration/validation distinction, and replicated seed plan.",
+        "The response prefers Leiden when supported or explicitly diagnoses Louvain connectedness, and reports objective, resolution, seed, and partition stability.",
+        "The response rejects log-log linear fitting as proof of a scale-free network and specifies MLE, xmin, bootstrap/KS goodness of fit, and competing distributions.",
+        "The response preserves scenario, parameter, replicate, seed, time, network-construction, version, and output-to-claim provenance."
+      ]
+    }
+  ]
+}

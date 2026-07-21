@@ -1,0 +1,380 @@
+{
+  "benchmark_id": "comprehensive-pilot-2026-07-21",
+  "benchmark_date": "July 21, 2026",
+  "skill": "css-research-skills",
+  "method": {
+    "tasks": 8,
+    "dimensions": 6,
+    "checks_per_task": 6,
+    "total_checks_per_condition": 48,
+    "runs_per_condition_task": 1,
+    "conditions_executed_concurrently": true,
+    "grading": "Candidate labels were rotated by task; two independent graders applied the same frozen binary rubric without access to the version mapping.",
+    "timing_and_token_comparison": "excluded because exact telemetry was unavailable",
+    "status": "pilot"
+  },
+  "conditions": [
+    {
+      "id": "no_skill",
+      "label": "No Skill",
+      "version": null,
+      "color": "#E4E2DA",
+      "edge_color": "#8E8D87",
+      "hatch": "..",
+      "overall_passed": 28,
+      "overall_total": 48,
+      "overall_pass_rate": 58.3
+    },
+    {
+      "id": "v1_0_0",
+      "label": "Skill 1.0.0",
+      "version": "1.0.0",
+      "color": "#C6D0B4",
+      "edge_color": "#7A8B64",
+      "hatch": "//",
+      "overall_passed": 31,
+      "overall_total": 48,
+      "overall_pass_rate": 64.6
+    },
+    {
+      "id": "v2_0_0",
+      "label": "Skill 2.0.0",
+      "version": "2.0.0",
+      "color": "#7A8B64",
+      "edge_color": "#3E4935",
+      "hatch": "",
+      "overall_passed": 42,
+      "overall_total": 48,
+      "overall_pass_rate": 87.5
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "staggered-adoption-did",
+      "label": "Staggered\nDiD",
+      "domain": "Causal inference",
+      "checks": 6,
+      "results": {
+        "v2_0_0": {
+          "passed": 6,
+          "total": 6,
+          "pass_rate": 100.0
+        },
+        "no_skill": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        },
+        "v1_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "cross-language-iv-audit",
+      "label": "Cross-language\nIV",
+      "domain": "Causal inference",
+      "checks": 6,
+      "results": {
+        "v1_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        },
+        "v2_0_0": {
+          "passed": 6,
+          "total": 6,
+          "pass_rate": 100.0
+        },
+        "no_skill": {
+          "passed": 3,
+          "total": 6,
+          "pass_rate": 50.0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "multilingual-text-causal-measurement",
+      "label": "Text → causal\nmeasurement",
+      "domain": "Text analysis",
+      "checks": 6,
+      "results": {
+        "no_skill": {
+          "passed": 3,
+          "total": 6,
+          "pass_rate": 50.0
+        },
+        "v1_0_0": {
+          "passed": 4,
+          "total": 6,
+          "pass_rate": 66.7
+        },
+        "v2_0_0": {
+          "passed": 6,
+          "total": 6,
+          "pass_rate": 100.0
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "imbalanced-text-classification-audit",
+      "label": "Text\nclassification",
+      "domain": "Text analysis",
+      "checks": 6,
+      "results": {
+        "v2_0_0": {
+          "passed": 4,
+          "total": 6,
+          "pass_rate": 66.7
+        },
+        "no_skill": {
+          "passed": 4,
+          "total": 6,
+          "pass_rate": 66.7
+        },
+        "v1_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "large-spatial-abm",
+      "label": "Spatial\nABM",
+      "domain": "Agent-based modeling",
+      "checks": 6,
+      "results": {
+        "v1_0_0": {
+          "passed": 4,
+          "total": 6,
+          "pass_rate": 66.7
+        },
+        "v2_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        },
+        "no_skill": {
+          "passed": 3,
+          "total": 6,
+          "pass_rate": 50.0
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "large-bipartite-network",
+      "label": "Bipartite\nnetwork",
+      "domain": "Network analysis",
+      "checks": 6,
+      "results": {
+        "no_skill": {
+          "passed": 4,
+          "total": 6,
+          "pass_rate": 66.7
+        },
+        "v1_0_0": {
+          "passed": 3,
+          "total": 6,
+          "pass_rate": 50.0
+        },
+        "v2_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "valued-ergm-with-missing-dyads",
+      "label": "Valued\nERGM",
+      "domain": "Network analysis",
+      "checks": 6,
+      "results": {
+        "v2_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        },
+        "no_skill": {
+          "passed": 4,
+          "total": 6,
+          "pass_rate": 66.7
+        },
+        "v1_0_0": {
+          "passed": 2,
+          "total": 6,
+          "pass_rate": 33.3
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "restricted-data-replication-package",
+      "label": "Replication\npackage",
+      "domain": "Research engineering",
+      "checks": 6,
+      "results": {
+        "v1_0_0": {
+          "passed": 3,
+          "total": 6,
+          "pass_rate": 50.0
+        },
+        "v2_0_0": {
+          "passed": 5,
+          "total": 6,
+          "pass_rate": 83.3
+        },
+        "no_skill": {
+          "passed": 2,
+          "total": 6,
+          "pass_rate": 33.3
+        }
+      }
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "research_framing",
+      "label": "Research framing",
+      "results": {
+        "no_skill": {
+          "passed": 3,
+          "total": 8,
+          "pass_rate": 37.5
+        },
+        "v1_0_0": {
+          "passed": 5,
+          "total": 8,
+          "pass_rate": 62.5
+        },
+        "v2_0_0": {
+          "passed": 7,
+          "total": 8,
+          "pass_rate": 87.5
+        }
+      }
+    },
+    {
+      "id": "method_fit",
+      "label": "Method fit",
+      "results": {
+        "no_skill": {
+          "passed": 7,
+          "total": 8,
+          "pass_rate": 87.5
+        },
+        "v1_0_0": {
+          "passed": 7,
+          "total": 8,
+          "pass_rate": 87.5
+        },
+        "v2_0_0": {
+          "passed": 8,
+          "total": 8,
+          "pass_rate": 100.0
+        }
+      }
+    },
+    {
+      "id": "implementation",
+      "label": "Implementation",
+      "results": {
+        "no_skill": {
+          "passed": 8,
+          "total": 8,
+          "pass_rate": 100.0
+        },
+        "v1_0_0": {
+          "passed": 8,
+          "total": 8,
+          "pass_rate": 100.0
+        },
+        "v2_0_0": {
+          "passed": 8,
+          "total": 8,
+          "pass_rate": 100.0
+        }
+      }
+    },
+    {
+      "id": "diagnostics",
+      "label": "Diagnostics",
+      "results": {
+        "no_skill": {
+          "passed": 5,
+          "total": 8,
+          "pass_rate": 62.5
+        },
+        "v1_0_0": {
+          "passed": 5,
+          "total": 8,
+          "pass_rate": 62.5
+        },
+        "v2_0_0": {
+          "passed": 7,
+          "total": 8,
+          "pass_rate": 87.5
+        }
+      }
+    },
+    {
+      "id": "reproducibility",
+      "label": "Reproducibility",
+      "results": {
+        "no_skill": {
+          "passed": 1,
+          "total": 8,
+          "pass_rate": 12.5
+        },
+        "v1_0_0": {
+          "passed": 1,
+          "total": 8,
+          "pass_rate": 12.5
+        },
+        "v2_0_0": {
+          "passed": 4,
+          "total": 8,
+          "pass_rate": 50.0
+        }
+      }
+    },
+    {
+      "id": "responsible_claims",
+      "label": "Responsible claims",
+      "results": {
+        "no_skill": {
+          "passed": 4,
+          "total": 8,
+          "pass_rate": 50.0
+        },
+        "v1_0_0": {
+          "passed": 5,
+          "total": 8,
+          "pass_rate": 62.5
+        },
+        "v2_0_0": {
+          "passed": 8,
+          "total": 8,
+          "pass_rate": 100.0
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "prompts": "benchmarks/comprehensive-prompts.json",
+    "eval_definition": "benchmarks/comprehensive-evals.json",
+    "raw_runs": "css-research-skills-workspace/iteration-3/raw",
+    "blinded_grades": "css-research-skills-workspace/iteration-3/blind",
+    "figure_script": "scripts/render_benchmark.py"
+  }
+}
